@@ -1,21 +1,10 @@
-
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: argoproj.io/v1alpha1
+kind: ArgoCD
 metadata:
-  name: mi-app
+  name: example-argocd
+  labels:
+    example: basic
 spec:
-  replicas: 2
-  selector:
-    matchLabels:
-      app: mi-app
-  template:
-    metadata:
-      labels:
-        app: mi-app
-    spec:
-      containers:
-      - name: mi-app
-        image: nginx:latest
-        ports:
-        - containerPort: 80
-
+  server:
+    service:
+      type: NodePort
